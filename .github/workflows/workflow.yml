@@ -34,3 +34,5 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           platforms: linux/amd64, linux/arm64
+          build-args: |
+            BUILDX_VERSION=0.7.1

@@ -1,7 +1,7 @@
 ARG BUILDX_VERSION=0.4.2
 ARG DOCKER_VERSION=latest
 
-FROM alpine AS fetcher
+FROM alpine AS buildx
 
 RUN apk add curl
 
@@ -15,4 +15,4 @@ RUN chmod a+x /docker-buildx
 ARG DOCKER_VERSION
 FROM docker:${DOCKER_VERSION}
 
-COPY --from=fetcher /docker-buildx /usr/lib/docker/cli-plugins/docker-buildx
+COPY --from=buildx /docker-buildx /usr/lib/docker/cli-plugins/docker-buildx
